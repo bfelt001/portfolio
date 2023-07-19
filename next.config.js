@@ -4,6 +4,7 @@ const nextConfig = {
 }
 
 module.exports = {
+  distDir: 'build',
   images: {
     remotePatterns: [
       {
