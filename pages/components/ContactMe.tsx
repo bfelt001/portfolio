@@ -2,10 +2,12 @@ import React, { useRef } from "react";
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
-    const form = useRef();
+  
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
 
     emailjs.sendForm('service_gpos6wl', 'template_cy46xiv', form.current, 'kJH7v5q85kqI7DUbD')
       .then((result) => {
@@ -21,7 +23,7 @@ export default function Contact() {
       Contact
     </h1>
     <div className="flex justify-center content-center items-center flex-col flex-wrap p-5 m-5 overflow-hidden">
-      <form ref={form} onSubmit={sendEmail} className="w-full max-w-md">
+      <form onSubmit={sendEmail} className="w-full max-w-md">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
           Name
         </label>
